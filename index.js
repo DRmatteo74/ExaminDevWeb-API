@@ -21,6 +21,13 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
     console.log('Middleware 2!');
+    const promesse = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('toto');
+        }, 1000);
+    });
+
+    promesse.then((valeur) => { console.log(valeur)});
     res.send('<h1>Météo France</h1>'); 
 });
 
