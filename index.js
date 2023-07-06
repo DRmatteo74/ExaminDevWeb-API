@@ -6,7 +6,11 @@ const http = require('http');
 // express permet de créer des routes, des middlewares ...
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const app = express();
+
+app.use(bodyParser.json());
 
 const meteoParisRoute = require('./routes/paris');
 const meteoLyonRoute = require('./routes/lyon');
