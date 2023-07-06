@@ -10,12 +10,15 @@ const app = express();
 
 const meteoParisRoute = require('./routes/paris');
 const meteoLyonRoute = require('./routes/lyon');
+const postRoute = require("./routes/posts");
 
 app.use(meteoLyonRoute);
 app.use(meteoParisRoute);
+app.use(postRoute);
 
 app.use((req, res, next) => {
     console.log('Middleware 1!');
+    res.status(500).send({ error: 'Something failed!' });
     next(); // Permet à la requête de continuer vers le prochain middleware
 });
 
